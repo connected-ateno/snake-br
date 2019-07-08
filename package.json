@@ -1,0 +1,46 @@
+{
+  "name": "snake-br",
+  "version": "1.0.0",
+  "description": "Product project for Web Test Club @ Connected",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "start": "concurrently --kill-others \"tsc -w\" \"nodemon .\"",
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connected-ateno/snake-br.git"
+  },
+  "keywords": [
+    "typescript",
+    "front-end",
+    "back-end",
+    "websockets",
+    "socket.io"
+  ],
+  "author": "Alexander Teno, et al.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connected-ateno/snake-br/issues"
+  },
+  "homepage": "https://github.com/connected-ateno/snake-br#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.12",
+    "@types/socket.io": "^2.1.2",
+    "concurrently": "^4.1.1",
+    "express": "^4.17.1",
+    "fsevents": "^2.0.7",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.2"
+  },
+  "dependencies": {
+    "socket.io": "^2.2.0"
+  }
+}

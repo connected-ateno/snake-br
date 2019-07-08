@@ -1,0 +1,85 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-console": [
+            true,
+            "warning"
+        ],
+        "quotemark": [
+            true,
+            "single",
+            "avoid-template",
+            "avoid-escape"
+        ]
+    },
+    "rulesDirectory": [],
+    "prefer-const": true,
+    "member-ordering": [
+        true,
+        {
+            "order": [
+                "public-static-field",
+                "public-instance-field",
+                "public-constructor",
+                "private-static-field",
+                "private-instance-field",
+                "private-constructor",
+                "public-instance-method",
+                "protected-instance-method",
+                "private-instance-method"
+            ],
+            "alphabetize": true
+        }
+    ],
+    "curly": true,
+    "no-return-await": true,
+    "no-string-literal": true,
+    "no-string-throw": true,
+    "no-unused-variable": [
+        true,
+        {
+            "ignore-pattern": "^_"
+        }
+    ],
+    "no-var-keyword": true,
+    "prefer-object-spread": true,
+    "no-duplicate-imports": [
+        true,
+        {
+            "allow-namespace-imports": true
+        }
+    ],
+    "interface-over-type-literal": true,
+    "object-literal-key-quotes": [
+        true,
+        "as-needed"
+    ],
+    "ordered-imports": [
+        true,
+        {
+            "import-sources-order": "lowercase-last",
+            "named-imports-order": "lowercase-first"
+        }
+    ],
+    "arrow-parens": [
+        true,
+        "ban-single-arg-parens"
+    ],
+    "eofline": true,
+    "no-consecutive-blank-lines": true,
+    "semicolon": [
+        true,
+        "always"
+    ],
+    "trailing-comma": [
+        true,
+        {
+            "multiline": "always",
+            "singleline": "never"
+        }
+    ]
+}
