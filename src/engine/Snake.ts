@@ -1,4 +1,5 @@
 import Direction from './constants/Direction';
+const DEFAULT_BODY_LENGTH = 3;
 export default class Snake {
     
     velocity: number;
@@ -6,7 +7,7 @@ export default class Snake {
     y: number;
     bodyLength: number;
     
-    constructor(velocity: number, x: number, y: number, l: number) {
+    constructor(velocity: number, x: number, y: number, l: number=DEFAULT_BODY_LENGTH) {
         this.velocity = velocity;
         this.x = x;
         this.y = y;
