@@ -1,5 +1,7 @@
 import Direction from './constants/Direction';
+
 const DEFAULT_BODY_LENGTH = 3;
+
 export default class Snake {
 
     public velocity: number;
@@ -7,7 +9,7 @@ export default class Snake {
     public y: number;
     public bodyLength: number;
 
-    constructor(velocity: number, x: number, y: number, l: number= DEFAULT_BODY_LENGTH) {
+    constructor(velocity: number, x: number, y: number, l: number = DEFAULT_BODY_LENGTH) {
         this.velocity = velocity;
         this.x = x;
         this.y = y;
@@ -28,8 +30,10 @@ export default class Snake {
     public grow() {
         return;
     }
-    public length(): any {
-        return length + 1;
+
+    // TODO: Below is an example of a read-only getter!
+    get length(): number {
+        return this.bodyLength + 1;
     }
 
 }

@@ -1,23 +1,23 @@
-import Snake from './Snake';
 import Direction from './constants/Direction';
-
-const INITIAL_DIRECTION = 1;
-const DEFAULT_X = 0;
-const DEFAULT_Y = 0;
-const INITIAL_LENGTH = 3;
+import Snake from './Snake';
 
 type MovementCase = [number, string, [number, number]];
 type DirectionCase = [Direction, string];
 
-describe('Snake', () => {
+describe('Class Snake', () => {
 
     describe('constructor', () => {
+
+        const INITIAL_DIRECTION = 1;
+        const DEFAULT_X = 0;
+        const DEFAULT_Y = 0;
+        const INITIAL_LENGTH = 3;
 
         it('returns a snake with a head, velocity, length, and a position', () => {
             const snake = new Snake(INITIAL_DIRECTION, DEFAULT_X, DEFAULT_Y, INITIAL_LENGTH);
             expect(snake).not.toBeNull();
             expect(snake.velocity).toEqual(INITIAL_DIRECTION);
-            expect(snake.length()).toEqual(3);
+            expect(snake.length).toEqual(3);
             expect(snake.x).toEqual(DEFAULT_X);
             expect(snake.y).toEqual(DEFAULT_Y);
         });
@@ -72,23 +72,30 @@ describe('Snake', () => {
 
     describe('grow', () => {
 
+        describe('a snake with length 3', () => {
 
-        it('tail length increases by one unit', () => {
-            const snake = new Snake(0, 0, 0, 3);
-            snake.grow();
-            expect(snake.length()).toEqual(4);
+            const INITIAL_LENGTH = 3;
+
+            it('tail length increases by one unit to 4', () => {
+                const snake = new Snake(0, 0, 0, INITIAL_LENGTH);
+                snake.grow();
+                expect(snake.length).toEqual(4);
+            });
+
+        });
+
+        describe('a snake with length 20', () => {
+
+            const INITIAL_LENGTH = 20;
+
+            it('tail length increases by one unit to 21', () => {
+                const snake = new Snake(0, 0, 0, INITIAL_LENGTH);
+                snake.grow();
+                expect(snake.length).toEqual(21);
+            });
+
         });
 
     });
-
-
-
-
-
-
-
-
-
-
 
 });
