@@ -39,7 +39,6 @@ export default class Snake implements IPoint {
         this.segments[this.bodyLength - 1] = {x: initialLast.x, y: initialLast.y};
     }
 
-    // TODO: Below is an example of a read-only getter!
     get length(): number {
         return this.bodyLength;
     }
