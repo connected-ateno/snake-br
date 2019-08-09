@@ -28,7 +28,7 @@ describe('Class Snake', () => {
                 DEFAULT_Y,
                 Direction.LEFT,
                 INITIAL_LENGTH,
-                'Facing left top left corner',
+                'Facing Left, Origin: Top Left',
                 [{ x: 1, y: 0 }, { x: 2, y: 0 }, { x: 3, y: 0 }],
             ],
             [
@@ -36,7 +36,7 @@ describe('Class Snake', () => {
                 DEFAULT_Y,
                 Direction.UP,
                 INITIAL_LENGTH,
-                'Facing up top left corner',
+                'Facing Up, Origin: Top Left',
                 [{ x: 0, y: 1 }, { x: 0, y: 2 }, { x: 0, y: 3 }],
             ],
             [
@@ -44,7 +44,7 @@ describe('Class Snake', () => {
                 ALT_Y,
                 Direction.RIGHT,
                 ALT_LENGTH,
-                'Facing right (50,50)',
+                'Facing Right, Origin: (50,50)',
                 [{ x: 49, y: 50 }, { x: 48, y: 50 }, { x: 47, y: 50 }, { x: 46, y: 50 }],
             ],
             [
@@ -52,7 +52,7 @@ describe('Class Snake', () => {
                 ALT_Y,
                 Direction.DOWN,
                 ALT_LENGTH,
-                'Facing right (50,50)',
+                'Facing Down, Origin: (50,50)',
                 [{ x: 50, y: 49 }, { x: 50, y: 48 }, { x: 50, y: 47 }, { x: 50, y: 46 }],
             ],
         ];
