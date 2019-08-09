@@ -17,16 +17,20 @@ export default class Snake implements IPoint {
         this.x = x;
         this.y = y;
         this.bodyLength = l;
+        const deltaX = this.deltaX;
+        const deltaY = this.deltaY;
+
         for (let i = 0; i < l; i++) {
-            this.segments[i] = {x: x + i + 1, y};
+            this.segments[i] = {x: x - (deltaX * (i + 1)), y: y - (deltaY * (i + 1))};
         }
     }
 
     public move() {
-        const deltaX = Math.round(Math.cos(this.velocity));
-        const deltaY = -1 * Math.round(Math.sin(this.velocity));
-        this.x += deltaX;
-        this.y += deltaY;
+        this.x += this.deltaX;
+        this.y += this.deltaY;
+        // TODO: Refactor
+        // Discard n-th segment and insert a new 0th segment at the next position.
+        // Re-model snake to care only about segments
     }
 
     public changeDirection(direction: Direction) {
@@ -41,6 +45,14 @@ export default class Snake implements IPoint {
 
     get length(): number {
         return this.bodyLength;
+    }
+
+    get deltaX(): number {
+        return Math.round(Math.cos(this.velocity));
+    }
+
+    get deltaY(): number {
+        return -1 * Math.round(Math.sin(this.velocity));
     }
 
 }
