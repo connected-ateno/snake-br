@@ -29,7 +29,7 @@ describe('Class Snake', () => {
                 Direction.LEFT,
                 INITIAL_LENGTH,
                 'Facing Left, Origin: Top Left',
-                [{ x: 1, y: 0 }, { x: 2, y: 0 }, { x: 3, y: 0 }],
+                [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }, { x: 3, y: 0 }],
             ],
             [
                 DEFAULT_X,
@@ -37,7 +37,7 @@ describe('Class Snake', () => {
                 Direction.UP,
                 INITIAL_LENGTH,
                 'Facing Up, Origin: Top Left',
-                [{ x: 0, y: 1 }, { x: 0, y: 2 }, { x: 0, y: 3 }],
+                [{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 0, y: 2 }, { x: 0, y: 3 }],
             ],
             [
                 ALT_X,
@@ -45,7 +45,7 @@ describe('Class Snake', () => {
                 Direction.RIGHT,
                 ALT_LENGTH,
                 'Facing Right, Origin: (50,50)',
-                [{ x: 49, y: 50 }, { x: 48, y: 50 }, { x: 47, y: 50 }, { x: 46, y: 50 }],
+                [{ x: 50, y: 50 }, { x: 49, y: 50 }, { x: 48, y: 50 }, { x: 47, y: 50 }, { x: 46, y: 50 }],
             ],
             [
                 ALT_X,
@@ -53,7 +53,7 @@ describe('Class Snake', () => {
                 Direction.DOWN,
                 ALT_LENGTH,
                 'Facing Down, Origin: (50,50)',
-                [{ x: 50, y: 49 }, { x: 50, y: 48 }, { x: 50, y: 47 }, { x: 50, y: 46 }],
+                [{ x: 50, y: 50 }, { x: 50, y: 49 }, { x: 50, y: 48 }, { x: 50, y: 47 }, { x: 50, y: 46 }],
             ],
         ];
 
@@ -89,6 +89,7 @@ describe('Class Snake', () => {
             expect(snake.x).toEqual(DEFAULT_X);
             expect(snake.y).toEqual(DEFAULT_Y);
             expect(snake.segments).toEqual([
+                { x: 0, y: 0 },
                 { x: 1, y: 0 },
                 { x: 2, y: 0 },
                 { x: 3, y: 0 },
@@ -103,6 +104,7 @@ describe('Class Snake', () => {
             expect(snake.x).toEqual(DEFAULT_X);
             expect(snake.y).toEqual(DEFAULT_Y);
             expect(snake.segments).toEqual([
+                { x: 0, y: 0 },
                 { x: 1, y: 0 },
                 { x: 2, y: 0 },
                 { x: 3, y: 0 },
@@ -111,24 +113,29 @@ describe('Class Snake', () => {
 
     });
 
-    const MOVEMENT_CASES: MovementCase[] = [
-        [Direction.RIGHT, 'Direction is 0, moves right', [1, 0]],
-        [Direction.UP, 'Direction is π/2, moves up', [0, -1]],
-        [Direction.LEFT, 'Direction is π, moves left', [-1, 0]],
-        [Direction.DOWN, 'Direction is 3π/2, moves down', [0, 1]],
-    ];
+    describe.skip('Movement', () => {
 
-    MOVEMENT_CASES.forEach(([direction, label, expected]) => {
+        const MOVEMENT_CASES: MovementCase[] = [
+            [Direction.RIGHT, 'Direction is 0, moves right', [1, 0]],
+            [Direction.UP, 'Direction is π/2, moves up', [0, -1]],
+            [Direction.LEFT, 'Direction is π, moves left', [-1, 0]],
+            [Direction.DOWN, 'Direction is 3π/2, moves down', [0, 1]],
+        ];
 
-        describe(label, () => {
+        /* TESTING SNAKE MOVE */
+        MOVEMENT_CASES.forEach(([direction, label, expected]) => {
 
-            const [expectedX, expectedY] = expected;
+            describe(label, () => {
 
-            it(`should be located at (${expectedX}, ${expectedY})`, () => {
-                const snake = new Snake(direction, 0, 0);
-                snake.move();
-                expect(snake.x).toEqual(expectedX);
-                expect(snake.y).toEqual(expectedY);
+                const [expectedX, expectedY] = expected;
+
+                it(`should be located at (${expectedX}, ${expectedY})`, () => {
+                    const snake = new Snake(direction, 0, 0);
+                    snake.move();
+                    expect(snake.x).toEqual(expectedX);
+                    expect(snake.y).toEqual(expectedY);
+                });
+
             });
 
         });
