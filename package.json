@@ -7,7 +7,7 @@
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "start": "concurrently --kill-others \"tsc -w\" \"nodemon .\"",
     "test": "jest --watch",
-    "doc": "typedoc --excludeNotExported --exclude \"*.test.ts\""
+    "doc": "typedoc --options typedoc.js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
+    "typedoc": "^0.15.0",
     "typescript": "^3.5.2"
   },
   "dependencies": {
