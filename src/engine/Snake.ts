@@ -4,7 +4,8 @@ import IPoint from './interfaces/IPoint';
 
 const DEFAULT_BODY_LENGTH = 3;
 
-// TODO: Refactor
+// TODO:
+// 0. Discuss the 'global-modifying-module-d-ts'
 // 1. Still going Green (post-interface update), need to repair the 'grow' tests
 // 2. Discard n-th segment and insert a new 0th segment at the next position.
 
