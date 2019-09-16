@@ -1,15 +1,5 @@
-import Segment from './classes/Segment';
 import Direction from './constants/Direction';
 import Snake from './Snake';
-
-// Direction, Label, Expected
-type MovementCase = [number, string, [number, number]];
-
-// X, Y, Direction, Length, Label, Expected Segments
-type ConstructorCase = [number, number, Direction, number, string, Segment[]];
-
-// Direction, Label
-type DirectionCase = [Direction, string];
 
 describe('Class Snake', () => {
 
@@ -113,7 +103,7 @@ describe('Class Snake', () => {
 
     });
 
-    describe.skip('Movement', () => {
+    describe('Movement', () => {
 
         const MOVEMENT_CASES: MovementCase[] = [
             [Direction.RIGHT, 'Direction is 0, moves right', [1, 0]],
