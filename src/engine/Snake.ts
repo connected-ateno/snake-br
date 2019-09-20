@@ -1,15 +1,21 @@
 import Segment from './classes/Segment';
 import Direction from './constants/Direction';
-import IPoint from './interfaces/IPoint';
 
 const DEFAULT_BODY_LENGTH = 3;
+
+// LAST-TIME:
+// 0. Completed the implementation re-work
+// 1. bodyLength is now preferred over length
+// 2. move has been implemented with the segment moving
+//    approach
+// 3.
 
 // TODO:
 // 0. Discuss the 'global-modifying-module-d-ts'
 // 1. Still going Green (post-interface update), need to repair the 'grow' tests
 // 2. Discard n-th segment and insert a new 0th segment at the next position.
 
-export default class Snake implements IPoint {
+export default class Snake {
 
     public velocity: number;
     public segments: Segment[] = [];
@@ -18,17 +24,26 @@ export default class Snake implements IPoint {
         this.velocity = velocity;
         const deltaX = this.deltaX;
         const deltaY = this.deltaY;
-
-        for (let i = 0; i < l + 1; i++) {
+        for (let i = 0; i < l; i++) {
             this.segments[i] = { x: x - (deltaX * i), y: y - (deltaY * i) };
         }
     }
 
     public move() {
-        // TODO: This needs to be replaced as part of the refactor
-        // this.x += this.deltaX;
-        // this.y += this.deltaY;
-        // segments[this.segments.length - 1];
+        // 1 & 2. Aquire discarded segment, pop from end
+        // 2. Insert at the front of segments
+        const recycledSegment = this.segments.pop();
+        if (!recycledSegment) {
+            throw Error('Somehow, you have no snake');
+        }
+        recycledSegment.x = this.x + this.deltaX;
+        recycledSegment.y = this.y + this.deltaY;
+        this.segments.unshift(recycledSegment);
+    }
+
+    public grow() {
+        const initialLast: Segment = this.segments[this.bodyLength - 1];
+        this.segments.push(new Segment(initialLast.x, initialLast.y));
     }
 
     public get x(): number {
@@ -43,17 +58,8 @@ export default class Snake implements IPoint {
         this.velocity = direction;
     }
 
-    public grow() {
-        const initialLast: Segment = this.segments[this.bodyLength - 1];
-        this.segments[this.bodyLength - 1] = { x: initialLast.x, y: initialLast.y };
-    }
-
     get bodyLength(): number {
-        return this.segments.length - 1;
-    }
-
-    get length(): number {
-        return this.bodyLength;
+        return this.segments.length;
     }
 
     get deltaX(): number {

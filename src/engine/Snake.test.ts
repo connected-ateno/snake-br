@@ -19,7 +19,7 @@ describe('Class Snake', () => {
                 Direction.LEFT,
                 INITIAL_LENGTH,
                 'Facing Left, Origin: Top Left',
-                [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }, { x: 3, y: 0 }],
+                [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 2, y: 0 }],
             ],
             [
                 DEFAULT_X,
@@ -27,7 +27,7 @@ describe('Class Snake', () => {
                 Direction.UP,
                 INITIAL_LENGTH,
                 'Facing Up, Origin: Top Left',
-                [{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 0, y: 2 }, { x: 0, y: 3 }],
+                [{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 0, y: 2 }],
             ],
             [
                 ALT_X,
@@ -35,7 +35,7 @@ describe('Class Snake', () => {
                 Direction.RIGHT,
                 ALT_LENGTH,
                 'Facing Right, Origin: (50,50)',
-                [{ x: 50, y: 50 }, { x: 49, y: 50 }, { x: 48, y: 50 }, { x: 47, y: 50 }, { x: 46, y: 50 }],
+                [{ x: 50, y: 50 }, { x: 49, y: 50 }, { x: 48, y: 50 }, { x: 47, y: 50 }],
             ],
             [
                 ALT_X,
@@ -43,7 +43,7 @@ describe('Class Snake', () => {
                 Direction.DOWN,
                 ALT_LENGTH,
                 'Facing Down, Origin: (50,50)',
-                [{ x: 50, y: 50 }, { x: 50, y: 49 }, { x: 50, y: 48 }, { x: 50, y: 47 }, { x: 50, y: 46 }],
+                [{ x: 50, y: 50 }, { x: 50, y: 49 }, { x: 50, y: 48 }, { x: 50, y: 47 }],
             ],
         ];
 
@@ -75,32 +75,15 @@ describe('Class Snake', () => {
             const snake = new Snake(INITIAL_DIRECTION, DEFAULT_X, DEFAULT_Y, INITIAL_LENGTH);
             expect(snake).not.toBeNull();
             expect(snake.velocity).toEqual(INITIAL_DIRECTION);
-            expect(snake.length).toEqual(3);
+            expect(snake.bodyLength).toEqual(3);
             expect(snake.x).toEqual(DEFAULT_X);
             expect(snake.y).toEqual(DEFAULT_Y);
             expect(snake.segments).toEqual([
                 { x: 0, y: 0 },
                 { x: 1, y: 0 },
                 { x: 2, y: 0 },
-                { x: 3, y: 0 },
             ]);
         });
-
-        it('returns ', () => {
-            const snake = new Snake(INITIAL_DIRECTION, DEFAULT_X, DEFAULT_Y, INITIAL_LENGTH);
-            expect(snake).not.toBeNull();
-            expect(snake.velocity).toEqual(INITIAL_DIRECTION);
-            expect(snake.length).toEqual(3);
-            expect(snake.x).toEqual(DEFAULT_X);
-            expect(snake.y).toEqual(DEFAULT_Y);
-            expect(snake.segments).toEqual([
-                { x: 0, y: 0 },
-                { x: 1, y: 0 },
-                { x: 2, y: 0 },
-                { x: 3, y: 0 },
-            ]);
-        });
-
     });
 
     describe('Movement', () => {
@@ -162,7 +145,7 @@ describe('Class Snake', () => {
             it('tail length increases by one unit to 4', () => {
                 const snake = new Snake(0, 0, 0, INITIAL_LENGTH);
                 snake.grow();
-                expect(snake.length).toEqual(4);
+                expect(snake.bodyLength).toEqual(4);
             });
 
         });
@@ -174,7 +157,7 @@ describe('Class Snake', () => {
             it('tail length increases by one unit to 21', () => {
                 const snake = new Snake(0, 0, 0, INITIAL_LENGTH);
                 snake.grow();
-                expect(snake.length).toEqual(21);
+                expect(snake.bodyLength).toEqual(21);
             });
 
         });
@@ -185,9 +168,9 @@ describe('Class Snake', () => {
 
             it('should have a position equal to the last body segment', () => {
                 const snake = new Snake(0, 0, 0, INITIAL_LENGTH);
-                snake.grow();
                 const lastSegmentPosition = snake.segments[INITIAL_LENGTH - 1];
-                expect(snake.segments[INITIAL_LENGTH]).toEqual(lastSegmentPosition);
+                snake.grow();
+                expect(snake.segments.length).toEqual(INITIAL_LENGTH + 1);
                 expect(snake.segments[INITIAL_LENGTH]).toEqual(lastSegmentPosition);
             });
 
