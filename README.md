@@ -1,5 +1,14 @@
 # Snake: Battle Royale
 
+## Sept. 27, 2019
+
+### Last Time
+
+0. completed the implementation re-work
+1. bodyLength is now preferred over length
+2. move has been implemented with the segment moving approach
+3. added a throw that should be tested (Philosophy discussion?)
+
 ## Asana
 
 https://app.asana.com/0/1131036943725251/board

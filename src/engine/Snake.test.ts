@@ -113,6 +113,11 @@ describe('Class Snake', () => {
 
         });
 
+        it('raises error when snake has zero length', () => {
+          const emptySnake = new Snake(0, 0, 0, 0);
+
+          expect(() => emptySnake.move()).toThrowError('Somehow, you have no snake');
+        });
     });
 
     const DIRECTION_CASES: DirectionCase[] = [
