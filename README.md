@@ -8,6 +8,8 @@
 1. bodyLength is now preferred over length
 2. move has been implemented with the segment moving approach
 3. added a throw that should be tested (Philosophy discussion?)
+4. Discussed the 'global-modifying-module-d-ts'.
+5. Discuss the philosophy of 'in-between' code-changes.
 
 ## Asana
 
