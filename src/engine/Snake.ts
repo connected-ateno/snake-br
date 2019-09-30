@@ -4,14 +4,14 @@ import Direction from './constants/Direction';
 const DEFAULT_BODY_LENGTH = 3;
 
 export default class Snake {
-    public velocity: number;
+    public direction: number;
     public segments: Segment[] = [];
 
-    constructor(velocity: number, x: number, y: number, l: number = DEFAULT_BODY_LENGTH) {
-        this.velocity = velocity;
+    constructor(direction: number, x: number, y: number, bodyLength: number = DEFAULT_BODY_LENGTH) {
+        this.direction = direction;
         const deltaX = this.deltaX;
         const deltaY = this.deltaY;
-        for (let i = 0; i < l; i++) {
+        for (let i = 0; i < bodyLength; i++) {
             this.segments[i] = { x: x - (deltaX * i), y: y - (deltaY * i) };
         }
     }
@@ -40,7 +40,7 @@ export default class Snake {
     }
 
     public changeDirection(direction: Direction) {
-        this.velocity = direction;
+        this.direction = direction;
     }
 
     get bodyLength(): number {
@@ -48,11 +48,11 @@ export default class Snake {
     }
 
     get deltaX(): number {
-        return Math.round(Math.cos(this.velocity));
+        return Math.round(Math.cos(this.direction));
     }
 
     get deltaY(): number {
-        return -1 * Math.round(Math.sin(this.velocity));
+        return -1 * Math.round(Math.sin(this.direction));
     }
 
 }

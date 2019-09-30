@@ -71,10 +71,10 @@ describe('Class Snake', () => {
 
         });
 
-        it('returns a snake with a head, velocity, length, and a position', () => {
+        it('returns a snake with a head, direction, length, and a position', () => {
             const snake = new Snake(INITIAL_DIRECTION, DEFAULT_X, DEFAULT_Y, INITIAL_LENGTH);
             expect(snake).not.toBeNull();
-            expect(snake.velocity).toEqual(INITIAL_DIRECTION);
+            expect(snake.direction).toEqual(INITIAL_DIRECTION);
             expect(snake.bodyLength).toEqual(3);
             expect(snake.x).toEqual(DEFAULT_X);
             expect(snake.y).toEqual(DEFAULT_Y);
@@ -134,7 +134,7 @@ describe('Class Snake', () => {
             it(label, () => {
                 const snake = new Snake(0, 0, 0, 0);
                 snake.changeDirection(direction);
-                expect(snake.velocity).toEqual(direction);
+                expect(snake.direction).toEqual(direction);
             });
 
         });
