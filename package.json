@@ -43,6 +43,6 @@
     "typescript": "^3.5.2"
   },
   "dependencies": {
-    "socket.io": "^2.2.0"
+    "socket.io": "^2.4.0"
   }
 }
